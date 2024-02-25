@@ -1,0 +1,224 @@
+/* Add your SASS styles here */
+
+$HeaderFooterColor: rgb(255, 240, 245);
+$BlackColor: black;
+$MainContainer: rgb(236, 198, 216);
+$LinksHoverColor: rgb(128, 0, 40);
+$ServicesDescriptionColor: darkslategrey;
+
+@mixin textAlign($position){
+    text-align: $position;
+}
+
+@mixin displayType($type){
+    display: $type;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    @include textAlign(center);
+    background-color: $HeaderFooterColor;
+    color: $BlackColor;
+    padding: 1px;
+    position: sticky;
+    top: 0;
+}
+
+nav {
+    ul
+    {
+        padding: 0;
+        align-items:start;
+    }
+}
+
+nav {
+    ul
+    {   li 
+        {
+            @include displayType(inline);
+            margin-right: 10px;
+        }
+    }
+}
+
+section {
+    margin-bottom: 10px;
+}
+
+footer {
+    @include textAlign(center);
+    background-color:$HeaderFooterColor;
+    color: #fe0374;
+    padding: 10px;
+}
+
+#welcome{
+    color: $BlackColor;
+    -webkit-text-fill-color: white; 
+    -webkit-text-stroke: 1px $BlackColor;
+}
+
+main{
+    @extend section;
+    background-color: $MainContainer;
+    padding: 20px;
+}
+
+ .links {
+    @include textAlign(left);
+    @include displayType(inline-block);
+    padding: 14px;
+    color: $HeaderFooterColor;
+    -webkit-text-stroke: 1px $LinksHoverColor;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bolder;
+    font-style: italic;
+    justify-content: left;
+ }
+
+ .links{
+    &:hover{
+        border-bottom: 2px solid $LinksHoverColor;
+    }
+ }
+
+ .selected{
+    border-bottom: 2px solid $LinksHoverColor;
+ }
+
+ .nav-left{
+    @include textAlign(left);
+    background-color:$HeaderFooterColor;
+ }
+
+
+.img-caption{
+    @include textAlign(center);
+    color:  $ServicesDescriptionColor;
+    font-weight: 800;
+    padding-top: 5px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+   
+}
+
+.info{
+    @include textAlign(left);
+    color: $ServicesDescriptionColor;
+}
+
+
+#description{
+    @include textAlign(center);
+    height: 400 px;
+    width: 500 px;
+    color:rgb(134, 45, 86);
+}
+
+.container{
+
+    width: 100%;
+    height: auto;
+    background-color:$MainContainer;
+    
+}
+
+.grid-container{
+
+    width: 80%;
+    max-width: 1170px;
+    @include displayType(grid);
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 50px 30px;
+    padding-bottom: 30px;
+
+}
+
+.grid-container {
+    .left {
+        overflow: hidden;
+        img {
+            width: 50%;
+            height: auto;
+            object-fit: cover;
+            @include displayType(block);
+        }
+    }
+
+    .right {
+        @include displayType(flex);
+        align-items: center;
+        .content{
+            padding-left: 20px;
+            p {
+                font-size: 16px;
+                line-height: 26px;
+                padding-bottom: 15px;
+            }
+        }
+    }
+}
+ 
+
+
+@media (max-width: 991px){
+    .grid-container {
+         .right {
+            .content{
+                padding-left: 0;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px){
+    .grid-container{
+        width: 90%;
+        grid-template-columns: 1 fr;
+    }
+}
+
+#banner-img{
+   height: 100%;
+   width: 100%;
+}
+
+#logo{
+    max-width: 180px;
+    max-height: 180px;
+    float: right;
+    padding-right: 20px;
+    padding-top: 8px;
+}
+
+
+#below-banner-heading{
+
+    color: rgb(134, 45, 86);
+    font-size: x-large;
+    font-weight: bolder;
+    
+}
+
+.welcome-animation{
+    animation-duration: 3s;
+    animation-name: slidein;
+
+}
+
+@keyframes slidein {
+    from{
+        margin-left: 50%;
+    }
+
+    to{
+        margin-left: 0%;
+    }
+}
